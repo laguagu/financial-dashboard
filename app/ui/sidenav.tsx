@@ -13,9 +13,9 @@ export default function Sidenav() {
       <NavLinks />
       <div className="mt-auto whitespace-nowrap">
         <form>
-          <button className="flex items-center gap-2 p-3 hover:bg-sky-100 hover:text-blue-600 rounded-lg">
+          <button className="flex items-center gap-2 p-3 hover:bg-sky-100 hover:text-blue-600 rounded-lg hover:font-semibold transition-colors duration-300">
             <PowerIcon className="w-6" />
-            <div className="hidden md:block text-center hover:font-semibold transition-colors duration-300">Sign Out</div>
+            <div className="hidden md:block text-center ">Sign Out</div>
           </button>
         </form>
       </div>
