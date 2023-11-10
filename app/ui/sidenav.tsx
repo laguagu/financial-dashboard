@@ -6,7 +6,7 @@ import { PowerIcon } from "@heroicons/react/24/outline";
 
 export default function Sidenav() {
   return (
-    <nav className="flex flex-col px-3 py-4 text-zinc-400 w-32 bg-slate-50 min-h-screen">
+    <nav className="flex flex-col px-3 py-4 text-zinc-400 w-44 bg-slate-50 min-h-screen">
       <Link href="/" className="mb-2 flex items-end rounded-md  p-4 md:h-28 bg-blue-">
         <BanknotesIcon className="h-14 w-14 mb-3 text-blue-400" />
       </Link>
