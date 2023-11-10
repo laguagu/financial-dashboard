@@ -28,9 +28,9 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             className={classNames(
-              "bg-gray-100 p-3 flex hover:text-blue-600 hover:font-semibold rounded-md space-x-2 mb-1 transition-colors duration-300",
+              "bg-gray-100 p-3 flex hover:text-blue-600 hover:font-semibold rounded-md space-x-3 mb-1 transition-colors duration-300",
               {
-                "bg-sky-100 text-blue-500": link.href === currenPath,
+                "bg-sky-100 text-blue-600": link.href === currenPath,
                 "text-zinc-400": link.href !== currenPath,
                 "transition-colors": true,
               }
