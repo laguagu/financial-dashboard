@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 
 
 const links = [
-  { name: "Etusivu", href: "/" },
-  { name: "Bugit", href: "/1" },
-  { name: "linkki1", href: "/2" },
+  { name: "Home", href: "/" },
+  { name: "Invoices", href: "/1" },
+  { name: "Customers", href: "/2" },
 ];
 
 export default function NavLinks() {
@@ -23,14 +23,14 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             className={classNames(
-                "bg-gray-100 p-3 hover:text-black hover:font-semibold  rounded-md space-x-2 mb-1",
+                "bg-gray-100 p-3 hover:text-black hover:font-semibold rounded-md space-x-2 mb-1 transition-colors duration-300",
                 {
               "bg-sky-100 text-blue-500": link.href === currenPath,
               "text-zinc-400": link.href !== currenPath,
               "transition-colors": true,
             })}
           >
-            Linkki
+            {link.name}
           </Link>
         );
       })}
