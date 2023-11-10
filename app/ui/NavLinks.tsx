@@ -4,6 +4,7 @@ import React from "react";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
 
+
 const links = [
   { name: "Etusivu", href: "/" },
   { name: "Bugit", href: "/1" },
