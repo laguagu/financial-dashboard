@@ -17,10 +17,9 @@ const links = [
 
 export default function NavLinks() {
   const currenPath = usePathname();
-  console.log(currenPath);
-
+  
   return (
-    <>
+    <div>
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
@@ -41,6 +40,6 @@ export default function NavLinks() {
           </Link>
         );
       })}
-    </>
+    </div>
   );
 }
