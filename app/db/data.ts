@@ -1,11 +1,5 @@
 import prisma from "@/prisma/db";
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  image_url: string | null;
-}
+import { User } from "@prisma/client";
 
 export async function saveUsersToDatabase(users: User[]): Promise<void> {
   const promises = users.map((user) => {
