@@ -1,4 +1,4 @@
-import Sidenav from "./ui/Sidenav";
+import Sidenav from "./ui/sidenav";
 import { fetchUsersFromDatabase, saveUsersToDatabase } from "./db/data";
 import { User } from "@prisma/client";
 
