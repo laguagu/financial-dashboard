@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import NavLinks from "./navLinks";
+import NavLinks from "./navlinks";
 import { PowerIcon } from "@heroicons/react/24/outline";
 import { CreditCardIcon } from "@heroicons/react/20/solid";
 
