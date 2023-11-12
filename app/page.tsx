@@ -1,4 +1,4 @@
-import Sidenav from "./ui/Sidenav";
+// import Sidenav from "./ui/Sidenav";
 import { fetchUsersFromDatabase, saveUsersToDatabase } from "./db/data";
 import { User } from "@prisma/client";
 
@@ -15,7 +15,7 @@ export default async function Home() {
   const users = await fetchUsersFromDatabase();
   return (
     <div className="flex">
-      <Sidenav />
+      {/* <Sidenav /> */}
       <div className="flex-grow flex justify-center items-center">
         <ul>
           {users.map((user: User) => (
