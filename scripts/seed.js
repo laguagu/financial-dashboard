@@ -2,15 +2,17 @@
 const { db } = require("@vercel/postgres");
 const { invoices } = require("../app/lib/placeholder-data.js");
 
+
 async function seedInvoices(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
+    
     // Create the "invoices" table if it doesn't exist
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS invoices (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      customer_id VARCHAR(255) NOT NULL, 
+      customer_id UUID NOT NULL, 
       amount INT NOT NULL,
       status VARCHAR(255) NOT NULL,
       date DATE NOT NULL
@@ -40,14 +42,15 @@ async function seedInvoices(client) {
 }
 
 async function main() {
-  const client = await db.connect();
-
-  await seedInvoices(client);
+  // const client = await db.connect();
+  console.log(uuid())
+  
+  // await seedInvoices(client);
   //   await seedUsers(client);
   //   await seedCustomers(client);
   //   await seedRevenue(client);
 
-    await client.end();
+    // await client.end();
 }
 
 main().catch((err) => {

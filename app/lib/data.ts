@@ -1,13 +1,14 @@
 import prisma from "@/prisma/db";
 import { Customers } from "@prisma/client";
+import { uuid } from 'uuidv4';
 
 export async function saveCustomerToDatabase(customers: Customers[]): Promise<void> {
   const promises = customers.map((customer) => {
     return prisma.customers.upsert({
-      where: { id: customer.id },
+      where: { email: customer.email },
       update: {},
       create: {
-        id: customer.id,
+        id: uuid(),
         name: customer.name,
         email: customer.email,
         image_url: customer.image_url,
