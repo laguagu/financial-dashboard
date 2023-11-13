@@ -1,6 +1,6 @@
 import prisma from "@/prisma/db";
 import { Customers } from "@prisma/client";
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 export async function saveCustomerToDatabase(customers: Customers[]): Promise<void> {
   const promises = customers.map((customer) => {
@@ -8,7 +8,7 @@ export async function saveCustomerToDatabase(customers: Customers[]): Promise<vo
       where: { email: customer.email },
       update: {},
       create: {
-        id: uuid(),
+        id: uuidv4(),
         name: customer.name,
         email: customer.email,
         image_url: customer.image_url,
