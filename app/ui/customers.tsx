@@ -8,7 +8,7 @@ type AllCustomersProps = {
 // Käytä tätä tyyppiä komponentin propsien määrittelyssä
 export default function AllCustomers({ customers }: AllCustomersProps) {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <ul>
         {customers.map((user) => (
           <li key={user.id}>{user.name}</li>
