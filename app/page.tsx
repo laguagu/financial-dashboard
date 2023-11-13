@@ -14,7 +14,7 @@ async function fetchCustomersApi(): Promise<Customers[]> {
 
 export default async function Home() {
   const apiCustomers: Customers[] = await fetchCustomersApi();
-  await saveCustomerToDatabase(apiCustomers);
+  // await saveCustomerToDatabase(apiCustomers);
 
   const customers = await fetchCustomersFromDatabase();
   return (
