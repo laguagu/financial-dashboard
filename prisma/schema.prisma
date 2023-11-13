@@ -12,8 +12,8 @@ datasource db {
 }
 
 model Customers {
-  id        String  @id
+  id        String  @id @default(uuid())
   name      String
-  email     String? @unique
-  image_url String? @unique
+  email     String  @unique
+  image_url String?
 }
