@@ -47,7 +47,7 @@ async function main() {
   //   await seedCustomers(client);
   //   await seedRevenue(client);
 
-  //   await client.end();
+    await client.end();
 }
 
 main().catch((err) => {

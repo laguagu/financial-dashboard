@@ -1,6 +1,7 @@
 import Sidenav from "./ui/sidenav";
 import { fetchCustomersFromDatabase, saveCustomerToDatabase } from "./lib/data";
 import { Customers } from "@prisma/client";
+import AllCustomers from "./ui/customers";
 
 async function fetchCustomersApi(): Promise<Customers[]> {
   const response = await fetch("https://6549f6b1e182221f8d523a44.mockapi.io/api/Users", {cache: "no-store"});
@@ -9,19 +10,15 @@ async function fetchCustomersApi(): Promise<Customers[]> {
 }
 
 export default async function Home() {
-  const apiUsers: Customers[] = await fetchCustomersApi()
-  await saveCustomerToDatabase(apiUsers)
+  const apiCustomers: Customers[] = await fetchCustomersApi()
+  await saveCustomerToDatabase(apiCustomers)
 
-  const users = await fetchCustomersFromDatabase();
+  const customers = await fetchCustomersFromDatabase();
   return (
     <div className="flex">
       <Sidenav />
       <div className="flex-grow flex justify-center items-center">
-        <ul>
-          {users.map((user: Customers) => (
-            <li key={user.id}>{user.name}</li>
-          ))}
-        </ul>
+        <AllCustomers customers={customers}/>
       </div>
     </div>
   );
