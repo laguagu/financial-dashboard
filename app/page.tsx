@@ -1,5 +1,5 @@
 import Sidenav from "./ui/sidenav";
-import { fetchUsersFromDatabase, saveUsersToDatabase } from "./db/data";
+import { fetchUsersFromDatabase, saveUsersToDatabase } from "./lib/data";
 import { User } from "@prisma/client";
 
 async function fetchUsersApi(): Promise<User[]> {
