@@ -10,7 +10,18 @@ async function fetchCustomersFromDatabase() {
   return customers;
 }
 
-async function seedInvoices(client) {
+async function createInvoices(customers) {
+  return customers.map((customer, index) => {
+    return {
+      customer_id: customer.id,
+      amount: Math.round(1000 * (Math.random() + index)),
+      status: index % 2 === 0 ? "pending" : "paid",
+      date: index % 2 === 0 ? '2022-12-06': '2023-09-10',
+    };
+  });
+}
+
+async function seedInvoices(client, invoices) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
@@ -52,14 +63,15 @@ async function seedInvoices(client) {
 async function main() {
   const client = await db.connect();
   const customers = await fetchCustomersFromDatabase();
-  console.log(customers)
+  const invoices = await createInvoices(customers)
+  console.log(invoices)
   
-  // await seedInvoices(client);
+  await seedInvoices(client,invoices);
   //   await seedUsers(client);
   //   await seedCustomers(client);
   //   await seedRevenue(client);
 
-    await client.end();
+  await client.end();
 }
 
 main().catch((err) => {
