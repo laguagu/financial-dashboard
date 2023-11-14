@@ -1,7 +1,14 @@
-// import { db } from '@vercel/postgres';
 const { db } = require("@vercel/postgres");
-const { invoices } = require("../app/lib/placeholder-data.js");
+const prisma = require("../prisma/db.js").default;;
 
+async function fetchCustomersFromDatabase() {
+  const customers = await prisma.customers.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
+  return customers;
+}
 
 async function seedInvoices(client) {
   try {
@@ -41,16 +48,18 @@ async function seedInvoices(client) {
   }
 }
 
+
 async function main() {
-  // const client = await db.connect();
-  console.log(uuid())
+  const client = await db.connect();
+  const customers = await fetchCustomersFromDatabase();
+  console.log(customers)
   
   // await seedInvoices(client);
   //   await seedUsers(client);
   //   await seedCustomers(client);
   //   await seedRevenue(client);
 
-    // await client.end();
+    await client.end();
 }
 
 main().catch((err) => {
