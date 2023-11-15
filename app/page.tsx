@@ -1,8 +1,9 @@
 import Sidenav from "./ui/sidenav";
-import { fetchCustomersFromDatabase, saveCustomerToDatabase, fetchLatestInvoices } from "./lib/data";
+import { fetchCustomersFromDatabase, saveCustomerToDatabase } from "./lib/data";
 import { Customers } from "@prisma/client";
 import AllCustomers from "./ui/customers";
 import { formatCurrency } from "./lib/utils";
+import LatestInvoices from "./ui/latest-invoices";
 
 
 async function fetchCustomersApi(): Promise<Customers[]> {
@@ -18,8 +19,7 @@ export default async function Home() {
   const apiCustomers: Customers[] = await fetchCustomersApi();
   // await saveCustomerToDatabase(apiCustomers);
   const customers = await fetchCustomersFromDatabase();
-  const invoices = await fetchLatestInvoices();
-  console.log(invoices);
+
   
   return (
     <div className="flex h-screen">
@@ -33,6 +33,7 @@ export default async function Home() {
         </div>
         {/* alaosa, jossa on kaksi isompaa laatikkoa */}
         <div className="flex-grow flex justify-around items-start">
+          <LatestInvoices/>
           {/* <AllCustomers customers={customers} />
           <AllCustomers customers={customers} /> */}
         </div>
