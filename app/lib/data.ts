@@ -33,9 +33,9 @@ export async function fetchCustomersFromDatabase(): Promise<Customers[]> {
 export async function fetchLatestInvoices() {
   try {
     const data = await sql<LatestInvoice>`
-      SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
+      SELECT invoices.id, invoices.amount, "Customers".name, "Customers".image_url, "Customers".email
       FROM invoices
-      JOIN customers ON invoices.customer_id = customers.id
+      JOIN "Customers" ON invoices.customer_id = "Customers".id
       ORDER BY invoices.date DESC
       LIMIT 5`;
     return data;
