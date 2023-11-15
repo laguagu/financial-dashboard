@@ -1,8 +1,8 @@
 -- CreateTable
 CREATE TABLE "Customers" (
-    "id" TEXT NOT NULL,
+    "id" UUID NOT NULL,
     "name" TEXT NOT NULL,
-    "email" TEXT,
+    "email" TEXT NOT NULL,
     "image_url" TEXT,
 
     CONSTRAINT "Customers_pkey" PRIMARY KEY ("id")
@@ -10,6 +10,3 @@ CREATE TABLE "Customers" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Customers_email_key" ON "Customers"("email");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Customers_image_url_key" ON "Customers"("image_url");

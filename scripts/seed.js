@@ -21,6 +21,10 @@ async function createInvoices(customers) {
   });
 }
 
+// If Syntax error: operator does not exist: uuid = text. Then run this on db query:
+// ALTER TABLE invoices
+// ALTER COLUMN customer_id TYPE UUID USING customer_id::UUID;
+
 async function seedInvoices(client, invoices) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
@@ -59,13 +63,11 @@ async function seedInvoices(client, invoices) {
   }
 }
 
-
 async function main() {
   const client = await db.connect();
   const customers = await fetchCustomersFromDatabase();
   const invoices = await createInvoices(customers)
-  console.log(invoices)
-  
+
   await seedInvoices(client,invoices);
   //   await seedUsers(client);
   //   await seedCustomers(client);

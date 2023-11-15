@@ -12,7 +12,7 @@ datasource db {
 }
 
 model Customers {
-  id        String  @id @default(uuid())
+  id        String  @id @default(uuid()) @db.Uuid
   name      String
   email     String  @unique
   image_url String?
