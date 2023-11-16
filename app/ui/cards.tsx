@@ -44,7 +44,7 @@ export function Card({
   const Icon = iconMap[type];
 
   return (
-    <div className="bg-gray-50 p-4 mt-3 rounded-xl shadow-md ">
+    <div className="bg-gray-50 p-4 mt-3 rounded-xl shadow-md transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-300">
       <div className="flex p-4">
         {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
         <h3 className="text-sm font-medium ml-2">{title}</h3>

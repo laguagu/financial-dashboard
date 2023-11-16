@@ -8,15 +8,18 @@ export default async function LatestInvoices() {
   return (
     <div>
       <h2 className="mb-4 text-xl">Latest Invoices</h2>
-      <div className="border bg-gray-100 p-3">
+      <div className="border bg-gray-100 p-3 shadow-sm rounded-xl">
         {invoices.map((invoice) => {
+          console.log(invoice);
+
           return (
             <div
               key={invoice.id}
-              className="p-2 flex flex-row items-center justify-between font-medium pt-3 border bg-white"
+              className="p-2 flex flex-row items-center justify-between font-normal pt-3 border bg-white rounded-sm  hover:text-blue-600 duration-100 "
             >
               {invoice.amount}
-              <div>
+              <div className="flex items-center">
+                <p className="pr-1">Sakari</p>
                 <Image
                   src={"/customers/happyCustomer.png"}
                   alt={`${invoice.email} profile picture`}
