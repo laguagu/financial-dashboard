@@ -33,7 +33,7 @@ export default async function Home() {
         <AllCustomers customers={customers} /> */}
         </div>
         {/* alaosa, jossa on kaksi isompaa laatikkoa */}
-        <div className="flex justify-around items-start">
+        <div className="m-7 justify-around items-start">
           <CardWrapper />
         </div>
       </div>
