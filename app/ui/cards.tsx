@@ -23,7 +23,7 @@ export default async function CardWrapper() {
   } = await fetchCardData();
   
   return (
-    <div className="grid grid-cols-4 gap-11">
+    <div className="grid grid-cols-4 gap-11 ">
       <Card title="Collected" value={totalPaidInvoices} type="collected" />
       <Card title="Pending" value={totalPendingInvoices} type="pending" />
       <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
