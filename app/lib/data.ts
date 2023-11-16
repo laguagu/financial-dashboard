@@ -5,7 +5,7 @@ import { sql } from "@vercel/postgres";
 import { LatestInvoice, LatestInvoiceRaw } from "./definitions";
 import { formatCurrency } from "./utils";
 
-// applied SQL query Logics from https://nextjs.org/learn tutorial 
+// applied SQL query Logics from https://nextjs.org/learn tutorial
 
 export async function saveCustomerToDatabase(
   customers: Customers[]
@@ -71,12 +71,11 @@ export async function fetchCardData() {
       invoiceStatusPromise,
     ]);
 
-    
-    const numberOfInvoices = Number(data[0].rows[0].count ?? '0');
-    const numberOfCustomers = Number(data[1].rows[0].count ?? '0');
-    const totalPaidInvoices = formatCurrency(data[2].rows[0].paid ?? '0');
-    const totalPendingInvoices = formatCurrency(data[2].rows[0].pending ?? '0');
-    
+    const numberOfInvoices = Number(data[0].rows[0].count ?? "0");
+    const numberOfCustomers = Number(data[1].rows[0].count ?? "0");
+    const totalPaidInvoices = formatCurrency(data[2].rows[0].paid ?? "0");
+    const totalPendingInvoices = formatCurrency(data[2].rows[0].pending ?? "0");
+
     return {
       numberOfCustomers,
       numberOfInvoices,
@@ -84,7 +83,7 @@ export async function fetchCardData() {
       totalPendingInvoices,
     };
   } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to card data.');
+    console.error("Database Error:", error);
+    throw new Error("Failed to card data.");
   }
 }
