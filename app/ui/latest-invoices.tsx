@@ -10,7 +10,6 @@ export default async function LatestInvoices() {
       <h2 className="mb-4 text-xl">Latest Invoices</h2>
       <div className="border bg-gray-100 p-3 shadow-sm rounded-xl ">
         {invoices.map((invoice) => {
-          console.log(invoice);
 
           return (
             <div

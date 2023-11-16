@@ -4,6 +4,8 @@ import { Customers } from "@prisma/client";
 import AllCustomers from "./ui/customers";
 import LatestInvoices from "./ui/latest-invoices";
 import CardWrapper from "./ui/cards";
+import MonthlyRevenueChart from "./ui/revenue";
+import { revenue } from "./lib/revenue-data";
 
 async function fetchCustomersApi(): Promise<Customers[]> {
   const response = await fetch(
@@ -19,20 +21,19 @@ export default async function Home() {
   // await saveCustomerToDatabase(apiCustomers);
   // const customers = await fetchCustomersFromDatabase();
 
+  console.log(revenue);
+
   return (
     <div className="flex h-screen">
       <Sidenav />
-      <div className="flex-grow flex flex-col ">
-        {/* yläosa, jossa on kolme pientä laatikkoa */}
-        <div className="grid grid-cols-2 gap-6 px-4 ">
+      <div className="flex-grow flex flex-col">
+        <div className="grid grid-cols-2 gap-6 px-4 m-5">
           <LatestInvoices />
-          {/* <LatestInvoices />
-          <LatestInvoices /> */}
-          {/* <AllCustomers customers={customers} />
-          <AllCustomers customers={customers} />
-        <AllCustomers customers={customers} /> */}
+
+            <div className="h-full w-full pt-10 ">
+              <MonthlyRevenueChart data={revenue} />
+          </div>
         </div>
-        {/* alaosa, jossa on kaksi isompaa laatikkoa */}
         <div className="m-7 justify-around items-start">
           <CardWrapper />
         </div>
