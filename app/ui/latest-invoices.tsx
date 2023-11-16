@@ -8,10 +8,10 @@ export default async function LatestInvoices() {
   return (
     <div>
       <h2 className="mb-4 text-xl">Latest Invoices</h2>
-      <div className="border bg-white px-2">
+      <div className="border bg-gray-100 p-3">
         {invoices.map((invoice) => {
           return (
-        <div key={invoice.id} className="flex flex-row  items-center justify-between font-medium pt-3 border">
+        <div key={invoice.id} className="p-2 flex flex-row items-center justify-between font-medium pt-3 border bg-white">
             {invoice.amount}
             <div>
                 <Image
