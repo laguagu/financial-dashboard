@@ -25,7 +25,7 @@ export default async function Home() {
       <Sidenav />
       <div className="flex-grow flex flex-col ">
         {/* yläosa, jossa on kolme pientä laatikkoa */}
-        <div className="grid grid-cols-3 gap-2 px-4 ">
+        <div className="grid grid-cols-3 gap-6 px-4 ">
         <LatestInvoices/>
         <LatestInvoices/>
         <LatestInvoices/>
