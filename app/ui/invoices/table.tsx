@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { fetchFilteredInvoices } from "../../lib/data";
-
+import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
 export default async function InvoiceTable({
   query,
   currentPage,
@@ -9,45 +9,50 @@ export default async function InvoiceTable({
   currentPage: number;
 }) {
   const invoices = await fetchFilteredInvoices(query, currentPage);
-  console.log(invoices);
 
   return (
-    <div className="bg-red-400 p-2">
-      <table className="text-gray-900">
-        <thead className="text-sm">
+    <div className="bg-gray-100 p-3 rounded-lg mt-6 flow-root m-5">
+      <table className="min-w-full text-gray-900">
+        <thead className="text-sm text-left">
           <tr>
-            <th scope="col" className="px-3 py-5 font-medium">
+            <th scope="col" className="px-5 py-3 font-medium">
               Customers
             </th>
-            <th scope="col" className="px-3 py-5 font-medium">
+            <th scope="col" className="px-3 py-3 font-medium">
               Email
             </th>
-            <th scope="col" className="px-3 py-5 font-medium">
+            <th scope="col" className="px-3 py-3 font-medium">
               Amount
             </th>
-            <th scope="col" className="px-3 py-5 font-medium">
+            <th scope="col" className="px-3 py-3 font-medium">
               Date
             </th>
-            <th scope="col" className="px-3 py-5 font-medium">
+            <th scope="col" className="px-3 py-3 font-medium">
               Status
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-white">
           {invoices.map((invoice) => (
-            <tr key={invoice.id}>
-                  <td className="py-2 pl-5">
-                    <div className="flex items-center gap-3">
-                      <Image
-                        src={"/customers/happyCustomer.png"}
-                        className="rounded-full"
-                        width={28}
-                        height={28}
-                        alt={`${invoice.name}'s profile picture`}
-                      />
-                      <p>{invoice.name}</p>
-                    </div>
-                  </td>
+            <tr key={invoice.id} className="w-full border-b">
+              <td className="px-5 py-3">
+                <div className="flex items-center gap-3">
+                  <Image
+                    src={"/customers/happyCustomer.png"}
+                    className="rounded-full"
+                    width={28}
+                    height={28}
+                    alt={`${invoice.name}'s profile picture`}
+                  />
+                  <p>{invoice.name}</p>
+                </div>
+              </td>
+              <td className="px-3 py-3">{invoice.email}</td>
+              <td className="px-3 py-3">{formatCurrency(invoice.amount)}</td>
+              <td className="px-3 py-3">
+                {formatDateToLocal(invoice.date)}
+              </td>
+              <td className="px-3 py-3">{invoice.status}</td>
             </tr>
           ))}
         </tbody>
