@@ -21,17 +21,14 @@ export default async function Home() {
   // await saveCustomerToDatabase(apiCustomers);
   // const customers = await fetchCustomersFromDatabase();
 
-  console.log(revenue);
-
   return (
     <div className="flex h-screen">
       <Sidenav />
       <div className="flex-grow flex flex-col">
         <div className="grid grid-cols-2 gap-6 px-4 m-5">
           <LatestInvoices />
-
-            <div className="h-full w-full pt-10 ">
-              <MonthlyRevenueChart data={revenue} />
+          <div className="h-full w-full pt-10 flex-none">
+            <MonthlyRevenueChart data={revenue} />
           </div>
         </div>
         <div className="m-7 justify-around items-start">
