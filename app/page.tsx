@@ -6,15 +6,9 @@ import LatestInvoices from "./ui/latest-invoices";
 import CardWrapper from "./ui/cards";
 import MonthlyRevenueChart from "./ui/revenue";
 import { revenue } from "./lib/revenue-data";
+import { fetchCustomersApi } from "./lib/data";
 
-async function fetchCustomersApi(): Promise<Customers[]> {
-  const response = await fetch(
-    "https://6549f6b1e182221f8d523a44.mockapi.io/api/Users"
-    // { cache: "no-store" }
-  );
-  const data = await response.json();
-  return data;
-}
+
 
 export default async function Home() {
   const apiCustomers: Customers[] = await fetchCustomersApi();

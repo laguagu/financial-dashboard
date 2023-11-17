@@ -7,6 +7,15 @@ import { formatCurrency } from "./utils";
 
 // applied SQL query Logics from https://nextjs.org/learn tutorial
 
+export async function fetchCustomersApi(): Promise<Customers[]> {
+  const response = await fetch(
+    "https://6549f6b1e182221f8d523a44.mockapi.io/api/Users"
+    // { cache: "no-store" }
+  );
+  const data = await response.json();
+  return data;
+}
+
 export async function saveCustomerToDatabase(
   customers: Customers[]
 ): Promise<void> {
