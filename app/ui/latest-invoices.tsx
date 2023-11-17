@@ -22,7 +22,7 @@ export default async function LatestInvoices() {
                 <div className="items-end pr-2">
                   <p className="items-end font-semibold ">{invoice.name}</p>
                   <p className="font-light text-sm font-mono">
-                    {`${invoice.email}`}
+                {`${invoice.email.replace(/\s+/g, '')}@gmail.com`}
                   </p>
                 </div>
                 <Image
