@@ -8,7 +8,7 @@ export default async function InvoiceTable({
   query: string;
   currentPage: number;
 }) {
-    const invoices = await fetchFilteredInvoices(query, currentPage);
+    // const invoices = await fetchFilteredInvoices(query, currentPage);
   return (
     <div className="bg-red-400 p-2">
       <table className="text-gray-900">
