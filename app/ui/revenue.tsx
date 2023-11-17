@@ -10,11 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-
-type RevenueData = {
-  month: string;
-  revenue: number;
-};
+import { RevenueData } from "../lib/definitions";
 
 type MonthlyRevenueChartProps = {
     data: RevenueData[];
