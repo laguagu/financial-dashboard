@@ -53,8 +53,8 @@ export default async function InvoiceTable({
               <td className="px-3 py-3">{formatCurrency(invoice.amount)}</td>
               <td className="px-3 py-3">{formatDateToLocal(invoice.date)}</td>
               <td className="px-3 py-3">{invoice.status}</td>
-              <td>
-                <div>
+              <td className="p-3">
+                <div className="flex gap-3 justify-end">
                   <UpdateInvoice id={invoice.id} />
                   <DeleteInvoice id={invoice.id} />
                 </div>
