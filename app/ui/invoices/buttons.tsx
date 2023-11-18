@@ -13,5 +13,10 @@ export function UpdateInvoice({ id }: { id: string }) {
 }
 
 export function DeleteInvoice({ id }: { id: string }) {
-  return <TrashIcon className="w-5" />;
+  return(
+    <button className="border p-2 rounded-lg hover:bg-gray-100">
+      <TrashIcon className="w-4" />
+      <span className="sr-only">Delete</span>
+    </button>
+    ) 
 }

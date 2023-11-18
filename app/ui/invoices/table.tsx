@@ -2,6 +2,8 @@ import Image from "next/image";
 import { fetchFilteredInvoices } from "../../lib/data";
 import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
 import { DeleteInvoice, UpdateInvoice } from "./buttons";
+import InvoiceStatus from "./status";
+
 export default async function InvoiceTable({
   query,
   currentPage,
@@ -10,7 +12,6 @@ export default async function InvoiceTable({
   currentPage: number;
 }) {
   const invoices = await fetchFilteredInvoices(query, currentPage);
-  console.log(invoices);
   
   return (
     <div className="bg-gray-100 p-3 rounded-lg mt-6 flow-root m-5">
@@ -52,7 +53,7 @@ export default async function InvoiceTable({
               <td className="px-3 py-3">{invoice.email}</td>
               <td className="px-3 py-3">{formatCurrency(invoice.amount)}</td>
               <td className="px-3 py-3">{formatDateToLocal(invoice.date)}</td>
-              <td className="px-3 py-3">{invoice.status}</td>
+              <td className="px-3 py-3"><InvoiceStatus status={invoice.status}/></td>
               <td className="p-3">
                 <div className="flex gap-3 justify-end">
                   <UpdateInvoice id={invoice.id} />
