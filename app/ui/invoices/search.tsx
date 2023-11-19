@@ -1,5 +1,6 @@
 import React from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+
 export default function SearchBar() {
 
     return (

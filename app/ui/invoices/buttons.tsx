@@ -20,3 +20,9 @@ export function DeleteInvoice({ id }: { id: string }) {
     </button>
     ) 
 }
+
+export function CreateInvoice() {
+  return (
+    <button className="border rounded-md bg-gray-100 ml-2 p-2">Create</button>
+  )
+}
