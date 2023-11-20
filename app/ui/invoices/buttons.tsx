@@ -24,7 +24,7 @@ export function DeleteInvoice({ id }: { id: string }) {
 export function CreateInvoice() {
   return (
     <Link
-      href="invoice/create"
+      href="invoices/create"
       className="px-4 flex items-center hover:bg-blue-500 transition-colors border rounded-lg bg-blue-600 text-white ml-2 p-2"
     >
       Create Invoice
