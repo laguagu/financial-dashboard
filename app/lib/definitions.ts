@@ -26,3 +26,8 @@ export type RevenueData = {
 export type LatestInvoiceRaw = Omit<LatestInvoice, "amount"> & {
   amount: number;
 };
+
+export type CustomerField = {
+  id: string;
+  name: string;
+};
