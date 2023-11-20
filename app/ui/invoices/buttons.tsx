@@ -13,16 +13,22 @@ export function UpdateInvoice({ id }: { id: string }) {
 }
 
 export function DeleteInvoice({ id }: { id: string }) {
-  return(
+  return (
     <button className="border p-2 rounded-lg hover:bg-gray-100">
       <TrashIcon className="w-4" />
       <span className="sr-only">Delete</span>
     </button>
-    ) 
+  );
 }
 
 export function CreateInvoice() {
   return (
-    <button className="border rounded-md bg-gray-100 ml-2 p-2">Create</button>
-  )
+    <Link
+      href="invoice/create"
+      className="px-4 flex items-center hover:bg-blue-500 transition-colors border rounded-lg bg-blue-600 text-white ml-2 p-2"
+    >
+      Create Invoice
+      <PlusIcon className="h-5 md:ml-4" />
+    </Link>
+  );
 }
