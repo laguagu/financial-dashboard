@@ -2,7 +2,7 @@ import prisma from "@/prisma/db";
 import { Customers } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 import { sql } from "@vercel/postgres";
-import { LatestInvoice, LatestInvoiceRaw, InvoicesTable } from "./definitions";
+import { LatestInvoice, LatestInvoiceRaw, InvoicesTable, CustomerField } from "./definitions";
 import { formatCurrency } from "./utils";
 
 // applied SQL query Logics from https://nextjs.org/learn tutorial
@@ -129,5 +129,23 @@ export async function fetchFilteredInvoices(
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function fetchCustomersDB() {
+  try {
+    const data = await sql<CustomerField>`
+      SELECT
+        id,
+        name
+      FROM "Customers"
+      ORDER BY name ASC
+    `;
+
+    const customers = data.rows;
+    return customers;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch all customers.');
   }
 }
