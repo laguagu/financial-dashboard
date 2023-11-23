@@ -6,6 +6,7 @@ import {
   CurrencyDollarIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   return (
@@ -73,6 +74,20 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             </div>
           </div>
         </fieldset>
+      </div>
+      <div className="flex mt-6 justify-end gap-4">
+      <Link 
+      href={"/invoices"}
+      className="px-4 flex items-center transition-colors border rounded-lg bg-gray-100 text-gray-600 ml-2 p-2 hover:bg-gray-200"
+      >
+        Cancel
+      </Link>
+      <Link 
+      href={"/invoices"}
+      className="px-4 flex items-center hover:bg-blue-500 transition-colors border rounded-lg bg-blue-600 text-white ml-2 p-2"
+      >
+        Create
+      </Link>
       </div>
     </form>
   );
