@@ -7,17 +7,25 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useFormState } from "react-dom";
+import { createInvoice } from "@/app/lib/actions";
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
+  const initialState = { message: null, errors: {} };
+  // const [state, dispatch] = useFormState(createInvoice, initialState)
   return (
-    <form>
+    <form action={createInvoice}>
       {/* Choose Customers */}
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         <label htmlFor="customers" className="mb-2 block font-medium">
           Choose customers
         </label>
         <div className="relative">
-          <select className="block w-full border-gray-200 rounded-md border py-2 outline-2 text-sm pl-1 pl-10">
+          <select
+            className="block w-full border-gray-200 rounded-md border py-2 outline-2 text-sm pl-10"
+            id="cutomer"
+            name="customerId"
+          >
             <option>Select Customer</option>
           </select>
           <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
@@ -29,6 +37,8 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           </label>
           <div className="relative">
             <input
+              id="amount"
+              name="amount"
               placeholder="Enter USD amount"
               type="number"
               className="block w-full border-gray-200 rounded-md border py-2 outline-2 text-sm pl-10"
@@ -46,8 +56,9 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
               <div className="flex items-center">
                 <input
                   id="pending"
-                  name="invoiceStatus"
+                  name="status"
                   type="radio"
+                  value="pending"
                   className="border-gray-200 rounded-md border py-2 outline-2 text-sm pl-1"
                 />
                 <label
@@ -60,8 +71,9 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
               <div className="flex items-center">
                 <input
                   id="paid"
-                  name="invoiceStatus"
+                  name="status"
                   type="radio"
+                  value="paid"
                   className="border-gray-200 rounded-md border py-2 outline-2 text-sm pl-1 "
                 />
                 <label
@@ -76,18 +88,18 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         </fieldset>
       </div>
       <div className="flex mt-6 justify-end gap-4">
-      <Link 
-      href={"/invoices"}
-      className="px-4 flex items-center transition-colors border rounded-lg bg-gray-100 text-gray-600 ml-2 p-2 hover:bg-gray-200"
-      >
-        Cancel
-      </Link>
-      <Link 
-      href={"/invoices"}
-      className="px-4 flex items-center hover:bg-blue-500 transition-colors border rounded-lg bg-blue-600 text-white ml-2 p-2"
-      >
-        Create
-      </Link>
+        <Link
+          href={"/invoices"}
+          className="px-4 flex items-center transition-colors border rounded-lg bg-gray-100 text-gray-600 ml-2 p-2 hover:bg-gray-200"
+        >
+          Cancel
+        </Link>
+        <button
+          className="px-4 flex items-center hover:bg-blue-500 transition-colors border rounded-lg bg-blue-600 text-white ml-2 p-2"
+          type="submit"
+        >
+          Create Invoice
+        </button>
       </div>
     </form>
   );
