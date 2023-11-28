@@ -5,7 +5,6 @@ type AllCustomersProps = {
   customers: Customers[];
 };
 
-// Käytä tätä tyyppiä komponentin propsien määrittelyssä
 export default function AllCustomers({ customers }: AllCustomersProps) {
   return (
     <div className="flex flex-col justify-center items-center">
