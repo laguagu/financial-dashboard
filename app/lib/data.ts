@@ -2,8 +2,9 @@ import prisma from "@/prisma/db";
 import { Customers } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 import { sql } from "@vercel/postgres";
-import { LatestInvoice, LatestInvoiceRaw, InvoicesTable, CustomerField } from "./definitions";
+import { InvoiceForm, LatestInvoiceRaw, InvoicesTable, CustomerField } from "./definitions";
 import { formatCurrency } from "./utils";
+import { unstable_noStore as noStore } from 'next/cache';
 
 // applied SQL query Logics from https://nextjs.org/learn tutorial
 
@@ -147,5 +148,30 @@ export async function fetchCustomersDB() {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch all customers.');
+  }
+}
+
+export async function fetchInvoiceById(id: string) {
+  noStore();
+  try {
+    const data = await sql<InvoiceForm>`
+    SELECT
+    invoices.id,
+    invoices.customer_id,
+    invoices.amount,
+    invoices.status
+    FROM invoices
+    WHERE invoices.id = ${id};
+    `;
+    const invoice = data.rows.map((invoice) => ({
+      ...invoice,
+      // Convert amount from cents to dollars
+      amount: invoice.amount / 100,
+    }));
+    
+    console.log("TESTING",invoice); // Invoice is an empty array []
+    return invoice[0];
+  } catch (error) {
+    console.error('Database Error:', error);
   }
 }
