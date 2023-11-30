@@ -1,12 +1,9 @@
-"use client"
+"use client";
 import { usePathname, useSearchParams } from "next/navigation";
 
 export default function Pagination() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  console.log("Tämä sivu",pathname);
-  
 
   return (
     <>
