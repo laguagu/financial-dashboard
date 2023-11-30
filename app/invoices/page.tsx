@@ -2,6 +2,7 @@ import Table from "../ui/invoices/table";
 import { lusitana } from "../ui/fonts";
 import SearchBar from "../ui/invoices/search";
 import { CreateInvoice } from "../ui/invoices/buttons";
+import Pagination from "../ui/invoices/pagination";
 
 export default async function Page({
   searchParams,
@@ -20,10 +21,13 @@ export default async function Page({
         <h1 className={`${lusitana.className} text-2xl`}>Invoices</h1>
       </div>
       <div className="p-3 m-5 flex">
-        <SearchBar/>
-        <CreateInvoice/>
+        <SearchBar />
+        <CreateInvoice />
       </div>
       <Table query={query} currentPage={currentPage} />
+      <div className="flex justify-center items-center">
+        <Pagination />
+      </div>
     </div>
   );
 }
