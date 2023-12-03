@@ -13,8 +13,8 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     params.set("page", pageNumber.toString());
     return `${pathname}?${params.toString()}`;
   };
-
-  console.log(createPageURL(currentPage - 1));
+  
+  console.log(createPageURL(currentPage));
 
   return (
     <>
@@ -24,6 +24,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
             <PaginationButton
               href={createPageURL(currentPage - 1)}
               name={"Prev"}
+              isDisabled={currentPage <= 1}
             />
           </li>
           <li>
@@ -54,6 +55,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
           <PaginationButton
               href={createPageURL(currentPage + 1)}
               name={"Next"}
+              isDisabled={currentPage >= totalPages}
             />
           </li>
         </ul>
@@ -61,7 +63,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     </>
   );
 
-  function PaginationButton({ href, name }: { href: string; name: string }) {
+  function PaginationButton({ href, name, isDisabled }: { href: string; name: string, isDisabled: boolean }) {
     const className = clsx(
       "h-10 px-5 py-2 text-indigo-600 transition-colors duration-150 bg-white border border-r-0 border-blue-600 focus:shadow-outline hover:bg-indigo-100",
       {
@@ -69,7 +71,8 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
         "rounded-r-lg": name==="Next"
       }
       );
-    return (
+    return isDisabled?(
+     <Link href={createPageURL(currentPage)} className={className}>{name}</Link>):(
       <>
         <Link
           className={className}
@@ -78,6 +81,6 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
           {name}
         </Link>
       </>
-    );
+    )
   }
 }
