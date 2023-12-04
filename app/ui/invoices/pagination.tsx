@@ -46,7 +46,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
           <li>
             <Link
               href={"/"}
-              className="h-10 px-5 py-2 text-white transition-colors duration-150 bg-blue-500 border border-r-0 border-blue-600 focus:shadow-outline"
+              className="h-10 px-5 py-2 text-white text-white transition-colors duration-150 bg-blue-500 border border-r-0 border-blue-600 focus:shadow-outline"
             >
               3
             </Link>
@@ -68,7 +68,8 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
       "h-10 px-5 py-2 text-indigo-600 transition-colors duration-150 bg-white border border-r-0 border-blue-600 focus:shadow-outline hover:bg-indigo-100",
       {
         "rounded-l-lg": name==="Prev",
-        "rounded-r-lg": name==="Next"
+        "rounded-r-lg": name==="Next",
+        'pointer-events-none text-gray-300': isDisabled,
       }
       );
     return isDisabled?(
