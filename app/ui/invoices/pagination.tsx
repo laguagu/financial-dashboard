@@ -13,7 +13,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     params.set("page", pageNumber.toString());
     return `${pathname}?${params.toString()}`;
   };
-  
+
   console.log(createPageURL(currentPage));
 
   return (
@@ -28,31 +28,22 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
             />
           </li>
           <li>
-            <Link
-              href={"/"}
-              className="h-10 px-5 py-2 text-blue-500 transition-colors duration-150 bg-white border border-r-0 border-blue-600 focus:shadow-outline"
-            >
-              1
-            </Link>
+            <PaginatioNumber
+              href={"/invoices?page=1"}
+              page={1}
+            />
           </li>
           <li>
-            <Link
-              href={"/"}
-              className="h-10 px-5 py-2 text-blue-500 transition-colors duration-150 bg-white border border-r-0 border-blue-600 focus:shadow-outline hover:bg-indigo-100"
-            >
-              2
-            </Link>
+            <PaginatioNumber
+              href={"/invoices?page=2"}
+              page={2}
+            />
           </li>
           <li>
-            <Link
-              href={"/"}
-              className="h-10 px-5 py-2 text-white text-white transition-colors duration-150 bg-blue-500 border border-r-0 border-blue-600 focus:shadow-outline"
-            >
-              3
-            </Link>
+            <PaginatioNumber href={"/invoices?page=3"} page={3} />
           </li>
           <li>
-          <PaginationButton
+            <PaginationButton
               href={createPageURL(currentPage + 1)}
               name={"Next"}
               isDisabled={currentPage >= totalPages}
@@ -63,25 +54,48 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     </>
   );
 
-  function PaginationButton({ href, name, isDisabled }: { href: string; name: string, isDisabled: boolean }) {
+  function PaginationButton({
+    href,
+    name,
+    isDisabled,
+  }: {
+    href: string;
+    name: string;
+    isDisabled: boolean;
+  }) {
     const className = clsx(
       "h-10 px-5 py-2 text-indigo-600 transition-colors duration-150 bg-white border border-r-0 border-blue-600 focus:shadow-outline hover:bg-indigo-100",
       {
-        "rounded-l-lg": name==="Prev",
-        "rounded-r-lg": name==="Next",
-        'pointer-events-none text-gray-300': isDisabled,
+        "rounded-l-lg": name === "Prev",
+        "rounded-r-lg": name === "Next",
+        "pointer-events-none text-gray-300": isDisabled,
       }
-      );
-    return isDisabled?(
-     <Link href={createPageURL(currentPage)} className={className}>{name}</Link>):(
+    );
+    return isDisabled ? (
+      <Link href={createPageURL(currentPage)} className={className}>
+        {name}
+      </Link>
+    ) : (
       <>
-        <Link
-          className={className}
-          href={href}
-        >
+        <Link className={className} href={href}>
           {name}
         </Link>
       </>
-    )
+    );
+  }
+
+  function PaginatioNumber({ href, page }: { href: string; page: number }) {
+    const className = clsx(
+      "h-10 px-5 py-2 transition-colors duration-150 border border-r-0 border-blue-600 focus:shadow-outline text-blue-500",
+      {
+        "text-white bg-blue-500": page===1,
+        "bg-white, hover:bg-indigo-100": page!==1
+      }
+    );
+    return (
+      <Link href={href} className={className}>
+        {page}
+      </Link>
+    );
   }
 }
