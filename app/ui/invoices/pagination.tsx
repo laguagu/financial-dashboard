@@ -8,6 +8,8 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
 
+  console.log(currentPage);
+  
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", pageNumber.toString());
@@ -15,7 +17,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   };
 
   console.log(createPageURL(currentPage));
-
+  
   return (
     <>
       <nav aria-label="Page navigation">
@@ -31,16 +33,18 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
             <PaginatioNumber
               href={"/invoices?page=1"}
               page={1}
+              currentPage={currentPage}
             />
           </li>
           <li>
             <PaginatioNumber
               href={"/invoices?page=2"}
               page={2}
+              currentPage={currentPage}
             />
           </li>
           <li>
-            <PaginatioNumber href={"/invoices?page=3"} page={3} />
+            <PaginatioNumber href={"/invoices?page=3"} page={3} currentPage={currentPage} />
           </li>
           <li>
             <PaginationButton
@@ -84,12 +88,15 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     );
   }
 
-  function PaginatioNumber({ href, page }: { href: string; page: number }) {
+  function PaginatioNumber({ href, page, currentPage }: { href: string; page: number; currentPage:number  }) {
+    const isActive = currentPage === page;
+    console.log(isActive);
+    
     const className = clsx(
       "h-10 px-5 py-2 transition-colors duration-150 border border-r-0 border-blue-600 focus:shadow-outline text-blue-500",
       {
-        "text-white bg-blue-500": page===1,
-        "bg-white, hover:bg-indigo-100": page!==1
+        "text-white bg-blue-500": isActive,
+        "bg-white, hover:bg-indigo-100": !isActive
       }
     );
     return (
