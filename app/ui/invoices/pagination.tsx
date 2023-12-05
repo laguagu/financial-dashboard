@@ -7,16 +7,12 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
-
-  console.log(currentPage);
   
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", pageNumber.toString());
     return `${pathname}?${params.toString()}`;
   };
-
-  console.log(createPageURL(currentPage));
   
   return (
     <>
@@ -90,7 +86,6 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
   function PaginatioNumber({ href, page, currentPage }: { href: string; page: number; currentPage:number  }) {
     const isActive = currentPage === page;
-    console.log(isActive);
     
     const className = clsx(
       "h-10 px-5 py-2 transition-colors duration-150 border border-r-0 border-blue-600 focus:shadow-outline text-blue-500",
