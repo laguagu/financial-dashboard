@@ -12,8 +12,8 @@ import { fetchCustomersApi } from "./lib/data";
 
 export default async function Home() {
   const apiCustomers: Customers[] = await fetchCustomersApi();
-  await saveCustomerToDatabase(apiCustomers);
-  const customers = await fetchCustomersFromDatabase();
+  // await saveCustomerToDatabase(apiCustomers);
+  // const customers = await fetchCustomersFromDatabase();
 
   return (
     <div className="flex h-screen">
