@@ -46,6 +46,7 @@ export async function fetchCustomersFromDatabase(): Promise<Customers[]> {
 }
 
 export async function fetchLatestInvoices() {
+  noStore();
   try {
     const data = await sql<LatestInvoiceRaw>`
       SELECT invoices.id, invoices.amount, "Customers".name, "Customers".image_url, "Customers".email
@@ -67,6 +68,7 @@ export async function fetchLatestInvoices() {
 }
 
 export async function fetchCardData() {
+  noStore();
   try {
     const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
     const customerCountPromise = sql`SELECT COUNT(*) FROM "Customers"`;
