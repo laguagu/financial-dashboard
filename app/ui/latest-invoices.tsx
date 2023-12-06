@@ -5,7 +5,6 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
 export default async function LatestInvoices() {
   const invoices = await fetchLatestInvoices();
-
   return (
     <div>
       <h2 className="mb-4 text-xl">Latest Invoices</h2>
