@@ -42,7 +42,7 @@ export default async function InvoiceTable({
               <td className="px-5 py-3">
                 <div className="flex items-center gap-3">
                   <Image
-                    src={"/customers/happyCustomer.png"}
+                    src={`/customers/${invoice.image_url}`}
                     className="rounded-full"
                     width={28}
                     height={28}

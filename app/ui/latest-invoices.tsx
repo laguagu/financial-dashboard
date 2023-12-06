@@ -26,7 +26,7 @@ export default async function LatestInvoices() {
                   </p>
                 </div>
                 <Image
-                  src={"/customers/happyCustomer.png"}
+                  src={`/customers/${invoice.image_url}`}
                   alt={`${invoice.email} profile picture`}
                   className="rounded-full"
                   width={32}
