@@ -104,6 +104,7 @@ export async function fetchFilteredInvoices(
   currentPage: number,
 ) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE; // Which row search start
+  noStore();
   try {
     const invoices = await sql<InvoicesTable>`
       SELECT
@@ -134,6 +135,7 @@ export async function fetchFilteredInvoices(
 }
 
 export async function fetchCustomersDB() {
+  noStore();
   try {
     const data = await sql<CustomerField>`
       SELECT
