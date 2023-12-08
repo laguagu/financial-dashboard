@@ -4,7 +4,11 @@ import SearchBar from "../ui/invoices/search";
 import { CreateInvoice } from "../ui/invoices/buttons";
 import Pagination from "../ui/invoices/pagination";
 import { fetchInvoicesPages } from "../lib/data";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: 'Invoices',
+};
 
 export default async function Page({
   searchParams,
@@ -17,7 +21,7 @@ export default async function Page({
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
   const totalPages = await fetchInvoicesPages(query);
-  
+
   return (
     <div className="w-full">
       <div className="p-3 mt-6 m-5">
@@ -29,7 +33,7 @@ export default async function Page({
       </div>
       <Table query={query} currentPage={currentPage} />
       <div className="flex justify-center items-center">
-        <Pagination totalPages={totalPages}/>
+        <Pagination totalPages={totalPages} />
       </div>
     </div>
   );
