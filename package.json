@@ -7,7 +7,8 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "ts-node -r dotenv/config ./scripts/seed.js"
+    "seed": "ts-node -r dotenv/config ./scripts/seed.js",
+    "test": "jest"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
