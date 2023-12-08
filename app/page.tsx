@@ -7,8 +7,11 @@ import CardWrapper from "./ui/cards";
 import MonthlyRevenueChart from "./ui/revenue";
 import { revenue } from "./lib/revenue-data";
 import { fetchCustomersApi } from "./lib/data";
+import { Metadata } from "next";
 
-
+export const metadata: Metadata = {
+  title: 'Home screen invoices',
+};
 
 export default async function Home() {
   const apiCustomers: Customers[] = await fetchCustomersApi();

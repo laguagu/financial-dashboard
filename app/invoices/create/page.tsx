@@ -1,8 +1,11 @@
 import { fetchCustomersDB } from '@/app/lib/data'
 import Form from '@/app/ui/invoices/form'
+import { Metadata } from 'next';
 import React from 'react'
 
-
+export const metadata: Metadata = {
+  title: 'Create new invoice',
+};
 
 export default async function Page() {
 const customers = await fetchCustomersDB()
