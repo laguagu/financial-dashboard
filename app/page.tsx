@@ -6,7 +6,7 @@ import LatestInvoices from "./ui/latest-invoices";
 import CardWrapper from "./ui/cards";
 import MonthlyRevenueChart from "./ui/revenue";
 import { revenue } from "./lib/revenue-data";
-import { fetchCustomersApi } from "./lib/data";
+
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const apiCustomers: Customers[] = await fetchCustomersApi();
+  // const apiCustomers: Customers[] = await fetchCustomersApi();
   // await saveCustomerToDatabase(apiCustomers);
   // const customers = await fetchCustomersFromDatabase();
 

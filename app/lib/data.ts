@@ -9,6 +9,7 @@ import { unstable_noStore as noStore } from 'next/cache';
 // applied SQL query Logics from https://nextjs.org/learn tutorial
 
 export async function fetchCustomersApi(): Promise<Customers[]> {
+  "use server"
   const response = await fetch(
     "https://6549f6b1e182221f8d523a44.mockapi.io/api/Users"
     // { cache: "no-store" }
