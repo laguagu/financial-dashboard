@@ -1,18 +1,12 @@
-describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('https://example.cypress.io')
-  })
-})
+describe("Invoices search test", () => {
+  it("front page contains 'Invoices' navbar Link", function () {
+    cy.visit(""); // Saa baseUrl cypress.config.ts tiedostosta
+    cy.get('a[href*="/invoices"]').click();
 
-describe('My First Test', () => {
-  it('Does not do much!', () => {
-    expect(true).to.equal(true)
-  })
-})
+    cy.url().should("include", "/invoices");
+    cy.get("label").contains("Search");
 
-describe("Home page test", () => {
-  it("front page contains 'Home' text", function () {
-    cy.visit("");
-    cy.contains("Home")
-  })
-})
+    cy.get("input").type("Patrik Laine");
+    cy.contains("Patrik Laine");
+  });
+});
