@@ -6,8 +6,8 @@ import LatestInvoices from "./ui/latest-invoices";
 import CardWrapper from "./ui/cards";
 import MonthlyRevenueChart from "./ui/revenue";
 import { revenue } from "./lib/revenue-data";
-
 import { Metadata } from "next";
+import LoggedIn from "./ui/user-logged";
 
 export const metadata: Metadata = {
   title: 'Home screen invoices',
@@ -21,6 +21,9 @@ export default async function Home() {
   return (
     <div className="flex h-screen">
       <div className="flex-grow flex flex-col">
+        <div className="flex justify-end pr-4">
+          <LoggedIn/>
+        </div>
         <div className="grid grid-cols-2 gap-6 px-4 m-5">
           <LatestInvoices />
           <div className="h-full w-full pt-10 flex-none">
