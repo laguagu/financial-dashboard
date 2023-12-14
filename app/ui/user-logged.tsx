@@ -1,15 +1,23 @@
 "use client";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function LoggedIn() {
   const { data: session, status } = useSession();
   console.log(session);
 
-  if (session) {
+  if (!session) {
     return (
-      <div className="flex">
-        <p className="font-medium">User logged in</p>
+      <div className="flex justify-center items-center pt-1">
+        <p className="font-medium pr-3">User logged in</p>
+        <Image 
+        className="inline object-cover w-8 h-8 rounded-full" 
+        src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+        width={20}
+        height={20}
+        alt="profile pic"
+        />
       </div>
     );
   } else {
