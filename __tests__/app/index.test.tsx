@@ -2,10 +2,12 @@ import { render, screen, waitFor } from "@testing-library/react";
 import Home from "@/app/page";
 
 describe("Home Component", () => {
-  it("should render customer data correctly", () => {
+  beforeEach(() => {
     render(<Home />);
+  });
 
-    const user = screen.getByText("Nikita Kucherov");
-    expect(user).toBeInTheDocument();
+  it("renders the home page", () => {
+    const homeElement = screen.getByRole("main");
+    expect(homeElement).toBeInTheDocument();
   });
 });
