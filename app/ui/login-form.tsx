@@ -1,10 +1,16 @@
+import { useFormStatus } from "react-dom";
+import LoggedIn from "./user-logged";
+
 export default function LoginForm() {
   return (
     <div className="w-full">
       <form className="bg-gray-50 px-6 pb-4 pt-8">
+        <div className="mb-3 block font-medium text-gray-900">
+          <h1 className="text-2xl mb-3">Please log in to continue.</h1>
+        </div>
         <div>
           <label
-            className="block mb-3 text-base text-gray-900 font-medium"
+            className="block mb-3 mt-5 text-base text-gray-900 font-medium"
             htmlFor="email"
           >
             Email
@@ -34,7 +40,21 @@ export default function LoginForm() {
             minLength={4}
           />
         </div>
+        <LoginButton />
       </form>
     </div>
+  );
+}
+
+function LoginButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      className="w-full mt-4 flex h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
+      aria-disabled={pending}
+    >
+      Log in
+    </button>
   );
 }
