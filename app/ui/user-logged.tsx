@@ -7,7 +7,7 @@ export default function LoggedIn() {
   const { data: session, status } = useSession();
   console.log(session);
 
-  if (!session) {
+  if (session) {
     return (
       <div className="flex justify-center items-center pt-1">
         <p className="font-medium pr-3">User logged in</p>
