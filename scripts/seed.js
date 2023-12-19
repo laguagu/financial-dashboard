@@ -63,13 +63,35 @@ async function seedInvoices(client, invoices) {
   }
 }
 
+async function seedUsers(client) {
+  try {
+    // Create the "users" table if it doesn't exist
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL
+      );
+    `);
+    console.log(`Created "users" table`);
+  } catch (error) {
+    console.error("Error creating users table:", error);
+    throw error;
+  }
+}
+    // Insert data into the "users" table
+    // const insertedUsers = await Promise.all([
+    //   client.query(`
+    //     INSERT INTO users (email, password)
+    //     VALUES ('
+
 async function main() {
   const client = await db.connect();
-  const customers = await fetchCustomersFromDatabase();
-  const invoices = await createInvoices(customers)
+  // const customers = await fetchCustomersFromDatabase();
+  // const invoices = await createInvoices(customers)
 
-  await seedInvoices(client,invoices);
-  //   await seedUsers(client);
+  // await seedInvoices(client,invoices);
+    await seedUsers(client);
   //   await seedCustomers(client);
   //   await seedRevenue(client);
 
