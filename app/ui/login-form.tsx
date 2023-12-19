@@ -8,7 +8,7 @@ export default function LoginForm() {
   
   return (
     <div className="w-full">
-      <form className="bg-gray-50 px-6 pb-4 pt-8 space-y-3" action={dispatch}>
+      <form className="bg-gray-50 px-6 pb-4 pt-8 space-y-3 rounded-lg" action={dispatch}>
         <div className="mb-3 block font-medium text-gray-900">
           <h1 className="text-2xl mb-3">Please log in to continue.</h1>
         </div>
@@ -21,8 +21,9 @@ export default function LoginForm() {
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            type="text"
+            id="email"
+            type="email"
+            name="email"
             placeholder="Enter your email address"
             required
           />
