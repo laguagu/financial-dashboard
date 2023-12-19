@@ -1,5 +1,20 @@
 const { db } = require("@vercel/postgres");
-const prisma = require("../prisma/db.js").default;;
+const prisma = require("../prisma/db.js").default;
+
+const users = [
+  {
+    id: '1',
+    name: 'User',
+    email: 'user@nextmail.com',
+    password: '123456',
+  },
+  {
+    id: '2',
+    name: 'User2',
+    email: 'user2@nextmail.com',
+    password: '123456',
+  },
+];
 
 async function fetchCustomersFromDatabase() {
   const customers = await prisma.customers.findMany({
@@ -16,51 +31,9 @@ async function createInvoices(customers) {
       customer_id: customer.id,
       amount: Math.round(1000 * (Math.random() + index)),
       status: index % 2 === 0 ? "pending" : "paid",
-      date: index % 2 === 0 ? '2022-12-06': '2023-09-10',
+      date: index % 2 === 0 ? "2022-12-06" : "2023-09-10",
     };
   });
-}
-
-// If Syntax error: operator does not exist: uuid = text. Then run this on db query:
-// ALTER TABLE invoices
-// ALTER COLUMN customer_id TYPE UUID USING customer_id::UUID;
-
-async function seedInvoices(client, invoices) {
-  try {
-    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-
-    
-    // Create the "invoices" table if it doesn't exist
-    const createTable = await client.sql`
-      CREATE TABLE IF NOT EXISTS invoices (
-      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      customer_id UUID NOT NULL, 
-      amount INT NOT NULL,
-      status VARCHAR(255) NOT NULL,
-      date DATE NOT NULL
-    );
-  `;
-    console.log(`Created "invoices" table`);
-    // Insert data into the "invoices" table
-    const insertedInvoices = await Promise.all(
-      invoices.map(
-        (invoice) => client.sql`
-          INSERT INTO invoices (customer_id, amount, status, date)
-          VALUES (${invoice.customer_id}, ${invoice.amount}, ${invoice.status}, ${invoice.date})
-          ON CONFLICT (id) DO NOTHING;
-        `
-      )
-    );
-
-    console.log(`Seeded ${insertedInvoices.length} invoices`);
-    return {
-      createTable,
-      invoices: insertedInvoices,
-    };
-  } catch (error) {
-    console.error("Error seeding invoices:", error);
-    throw error;
-  }
 }
 
 async function seedUsers(client) {
@@ -69,21 +42,34 @@ async function seedUsers(client) {
     await client.query(`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
+        name TEXT NOT NULL,
         email TEXT NOT NULL,
         password TEXT NOT NULL
       );
     `);
     console.log(`Created "users" table`);
+    // Insert data into the "users" table
+    const insertedUsers = await Promise.all(
+      users.map(async (user) =>
+        client.query(
+          `
+        INSERT INTO users (id, name, email, password)
+        VALUES ($1, $2, $3, $4)
+        ON CONFLICT (id) DO NOTHING;
+      `,
+          [user.id, user.name, user.email, user.password]
+        )
+      )
+    );
+    console.log(`Seeded ${insertedUsers.length} users`);
+    return {
+      users: insertedUsers,
+    };
   } catch (error) {
     console.error("Error creating users table:", error);
     throw error;
   }
 }
-    // Insert data into the "users" table
-    // const insertedUsers = await Promise.all([
-    //   client.query(`
-    //     INSERT INTO users (email, password)
-    //     VALUES ('
 
 async function main() {
   const client = await db.connect();
