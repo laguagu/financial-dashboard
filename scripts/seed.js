@@ -1,18 +1,19 @@
 const { db } = require("@vercel/postgres");
 const prisma = require("../prisma/db.js").default;
+const bcrypt = require("bcrypt");
 
 const users = [
   {
-    id: '1',
-    name: 'User',
-    email: 'user@nextmail.com',
-    password: '123456',
+    id: "1",
+    name: "User",
+    email: "user@nextmail.com",
+    password: "123456",
   },
   {
-    id: '2',
-    name: 'User2',
-    email: 'user2@nextmail.com',
-    password: '123456',
+    id: "2",
+    name: "User2",
+    email: "user2@nextmail.com",
+    password: "123456",
   },
 ];
 
@@ -50,17 +51,16 @@ async function seedUsers(client) {
     console.log(`Created "users" table`);
     // Insert data into the "users" table
     const insertedUsers = await Promise.all(
-      users.map(async (user) =>
-        client.query(
-          `
+      users.map(async (user) => {
+        const hashedPassword = await bcrypt.hash(user.password, 10);
+        return client.sql`
         INSERT INTO users (id, name, email, password)
-        VALUES ($1, $2, $3, $4)
+        VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
         ON CONFLICT (id) DO NOTHING;
-      `,
-          [user.id, user.name, user.email, user.password]
-        )
-      )
+      `;
+      }),
     );
+    
     console.log(`Seeded ${insertedUsers.length} users`);
     return {
       users: insertedUsers,
@@ -77,7 +77,7 @@ async function main() {
   // const invoices = await createInvoices(customers)
 
   // await seedInvoices(client,invoices);
-    await seedUsers(client);
+  await seedUsers(client);
   //   await seedCustomers(client);
   //   await seedRevenue(client);
 
