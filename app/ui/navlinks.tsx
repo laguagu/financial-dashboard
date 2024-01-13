@@ -12,7 +12,7 @@ import {
 const links = [
   { name: "Home", href: "/", icon: HomeIcon },
   { name: "Invoices", href: "/invoices", icon: DocumentDuplicateIcon  },
-  { name: "Customers", href: "/2", icon: UserGroupIcon  },
+  { name: "Customers", href: "/customers", icon: UserGroupIcon  },
 ];
 
 export default function NavLinks() {
