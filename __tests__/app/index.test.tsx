@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import Home from "@/app/page";
+import Home from "@/app/(overview)/page";
 
 describe("Home Component", () => {
   beforeEach(() => {
