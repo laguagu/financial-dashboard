@@ -1,13 +1,11 @@
-import Sidenav from "../ui/sidenav";
-import { fetchCustomersFromDatabase, saveCustomerToDatabase } from "../lib/data";
-import { Customers } from "@prisma/client";
-import AllCustomers from "../ui/customers";
 import LatestInvoices from "../ui/latest-invoices";
 import CardWrapper from "../ui/cards";
 import MonthlyRevenueChart from "../ui/revenue";
 import { revenue } from "../lib/revenue-data";
 import { Metadata } from "next";
 import LoggedIn from "../ui/user-logged";
+import { Suspense } from "react";
+import { CardSkeleton } from "../ui/skeletons";
 
 export const metadata: Metadata = {
   title: 'Home screen invoices',
@@ -31,7 +29,9 @@ export default async function Home() {
           </div>
         </div>
         <div className="m-7 justify-around items-start">
-          <CardWrapper />
+          <Suspense fallback={<CardSkeleton/>} >
+            <CardWrapper />
+          </Suspense>
         </div>
       </div>
     </div>
