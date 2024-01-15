@@ -1,13 +1,13 @@
-import Sidenav from "./ui/sidenav";
-import { fetchCustomersFromDatabase, saveCustomerToDatabase } from "./lib/data";
+import Sidenav from "../ui/sidenav";
+import { fetchCustomersFromDatabase, saveCustomerToDatabase } from "../lib/data";
 import { Customers } from "@prisma/client";
-import AllCustomers from "./ui/customers";
-import LatestInvoices from "./ui/latest-invoices";
-import CardWrapper from "./ui/cards";
-import MonthlyRevenueChart from "./ui/revenue";
-import { revenue } from "./lib/revenue-data";
+import AllCustomers from "../ui/customers";
+import LatestInvoices from "../ui/latest-invoices";
+import CardWrapper from "../ui/cards";
+import MonthlyRevenueChart from "../ui/revenue";
+import { revenue } from "../lib/revenue-data";
 import { Metadata } from "next";
-import LoggedIn from "./ui/user-logged";
+import LoggedIn from "../ui/user-logged";
 
 export const metadata: Metadata = {
   title: 'Home screen invoices',
