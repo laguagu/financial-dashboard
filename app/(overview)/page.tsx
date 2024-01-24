@@ -28,7 +28,7 @@ export default async function Home() {
             <MonthlyRevenueChart data={revenue} />
           </div>
         </div>
-        <div className="m-7 justify-around items-start">
+        <div className="justify-around items-start px-4 m-5">
           <Suspense fallback={<CardSkeleton/>} >
             <CardWrapper />
           </Suspense>
