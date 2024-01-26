@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidenav from "./ui/sidenav";
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,16 @@ export default function RootLayout({
         <div className="flex h-screen">
           <Sidenav />
           <div className="flex-grow">
-            <SessionProvider>{children}</SessionProvider>
+            <SessionProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                {children}
+              </ThemeProvider>
+            </SessionProvider>
           </div>
         </div>
       </body>
