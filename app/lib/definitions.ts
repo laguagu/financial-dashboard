@@ -53,3 +53,12 @@ export type User = {
   email: string;
   password: string;
 }
+
+export type Members = {
+  id: string,
+  name: string,
+  company: string,
+  email: string,
+  county: string,
+  status: string
+}
