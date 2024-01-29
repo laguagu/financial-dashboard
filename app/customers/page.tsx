@@ -3,6 +3,7 @@ import CustomerCard from "../ui/customers/customer-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ModeToggle } from "../ui/toggle-theme";
 import CustomerSearch from "../ui/customers/searchbar";
+import AllCustomersCard from "../ui/customers/all-customers";
 
 export const metadata: Metadata = {
   title: "Customers",
@@ -28,6 +29,9 @@ export default function CustomersPage() {
       </div>
       <div>
         <CustomerCard />
+      </div>
+      <div>
+        <AllCustomersCard />
       </div>
     </div>
   );
