@@ -2,14 +2,20 @@ import prisma from "@/prisma/db";
 import { Customers } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 import { sql } from "@vercel/postgres";
-import { InvoiceForm, LatestInvoiceRaw, InvoicesTable, CustomerField } from "./definitions";
+import {
+  InvoiceForm,
+  LatestInvoiceRaw,
+  InvoicesTable,
+  CustomerField,
+  Members,
+} from "./definitions";
 import { formatCurrency } from "./utils";
-import { unstable_noStore as noStore } from 'next/cache';
+import { unstable_noStore as noStore } from "next/cache";
 
 // applied SQL query Logics from https://nextjs.org/learn tutorial
 
 export async function fetchCustomersApi(): Promise<Customers[]> {
-  "use server"
+  "use server";
   const response = await fetch(
     "https://6549f6b1e182221f8d523a44.mockapi.io/api/Users"
     // { cache: "no-store" }
@@ -105,7 +111,7 @@ export async function fetchCardData() {
 const ITEMS_PER_PAGE = 6;
 export async function fetchFilteredInvoices(
   query: string,
-  currentPage: number,
+  currentPage: number
 ) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE; // Which row search start
   noStore();
@@ -133,8 +139,8 @@ export async function fetchFilteredInvoices(
 
     return invoices.rows;
   } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch invoices.');
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch invoices.");
   }
 }
 
@@ -152,8 +158,21 @@ export async function fetchCustomersDB() {
     const customers = data.rows;
     return customers;
   } catch (err) {
-    console.error('Database Error:', err);
-    throw new Error('Failed to fetch all customers.');
+    console.error("Database Error:", err);
+    throw new Error("Failed to fetch all customers.");
+  }
+}
+
+export async function fetchMembersDB() {
+  try {
+    const data = await sql<Members>`
+      SELECT * FROM paidmembers
+    `;
+    const members = data.rows;
+    return members
+  } catch (error) {
+    console.error("Database Error", error);
+    throw new Error("Failed to fetch plus members.");
   }
 }
 
@@ -174,10 +193,10 @@ export async function fetchInvoiceById(id: string) {
       // Convert amount from cents to dollars
       amount: invoice.amount / 100,
     }));
-    
+
     return invoice[0];
   } catch (error) {
-    console.error('Database Error:', error);
+    console.error("Database Error:", error);
   }
 }
 
@@ -198,7 +217,7 @@ export async function fetchInvoicesPages(query: string) {
     const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
     return totalPages;
   } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch total number of invoices.');
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch total number of invoices.");
   }
 }
