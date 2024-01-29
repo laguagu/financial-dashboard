@@ -1,6 +1,13 @@
 // This file contains placeholder data that you'll be replacing with real data in the Data Fetching chapter:
 // https://nextjs.org/learn/dashboard-app/fetching-data
 
+
+const customers = [
+  { id: '1', name: 'Customer 1' },
+  { id: '2', name: 'Customer 2' },
+  // Lisää tarvittavat asiakkaat tähän
+];
+
 const users = [
     {
       id: '1',
@@ -15,100 +22,7 @@ const users = [
       password: '123456',
     },
   ];
-  
-  const invoices = [
-    {
-      customer_id: customers[0].id,
-      amount: 15795,
-      status: 'pending',
-      date: '2022-12-06',
-    },
-    {
-      customer_id: customers[1].id,
-      amount: 20348,
-      status: 'pending',
-      date: '2022-11-14',
-    },
-    {
-      customer_id: customers[4].id,
-      amount: 3040,
-      status: 'paid',
-      date: '2022-10-29',
-    },
-    {
-      customer_id: customers[3].id,
-      amount: 44800,
-      status: 'paid',
-      date: '2023-09-10',
-    },
-    {
-      customer_id: customers[5].id,
-      amount: 34577,
-      status: 'pending',
-      date: '2023-08-05',
-    },
-    {
-      customer_id: customers[7].id,
-      amount: 54246,
-      status: 'pending',
-      date: '2023-07-16',
-    },
-    {
-      customer_id: customers[6].id,
-      amount: 666,
-      status: 'pending',
-      date: '2023-06-27',
-    },
-    {
-      customer_id: customers[3].id,
-      amount: 32545,
-      status: 'paid',
-      date: '2023-06-09',
-    },
-    {
-      customer_id: customers[4].id,
-      amount: 1250,
-      status: 'paid',
-      date: '2023-06-17',
-    },
-    {
-      customer_id: customers[5].id,
-      amount: 8546,
-      status: 'paid',
-      date: '2023-06-07',
-    },
-    {
-      customer_id: customers[1].id,
-      amount: 500,
-      status: 'paid',
-      date: '2023-08-19',
-    },
-    {
-      customer_id: customers[5].id,
-      amount: 8945,
-      status: 'paid',
-      date: '2023-06-03',
-    },
-    {
-      customer_id: customers[2].id,
-      amount: 8945,
-      status: 'paid',
-      date: '2023-06-18',
-    },
-    {
-      customer_id: customers[0].id,
-      amount: 8945,
-      status: 'paid',
-      date: '2023-10-04',
-    },
-    {
-      customer_id: customers[2].id,
-      amount: 1000,
-      status: 'paid',
-      date: '2022-06-05',
-    },
-  ];
-  
+
   const revenue = [
     { month: 'Jan', revenue: 2000 },
     { month: 'Feb', revenue: 1800 },
@@ -123,11 +37,77 @@ const users = [
     { month: 'Nov', revenue: 3000 },
     { month: 'Dec', revenue: 4800 },
   ];
-  
+
+  const paidMembers = [
+    {
+      name: 'Matti Nykänen',
+      company: 'Microsoft',
+      phoneNumber: '050505050',
+      email: 'Matti@microsoft.com',
+      country: 'United States',
+      status: 'Active',
+    },
+    {
+      name: 'Jane Cooper',
+      company: 'Yahoo',
+      phoneNumber: '043043958',
+      email: 'Jana@yahoo.com',
+      country: 'Hong Kong',
+      status: 'Inactive',
+    },
+    {
+      name: 'John Doe',
+      company: 'Google',
+      phoneNumber: '123456789',
+      email: 'john.doe@google.com',
+      country: 'Canada',
+      status: 'Active',
+    },
+    {
+      name: 'Alice Smith',
+      company: 'Apple',
+      phoneNumber: '987654321',
+      email: 'alice.smith@apple.com',
+      country: 'United Kingdom',
+      status: 'Inactive',
+    },
+    {
+      name: 'Bob Johnson',
+      company: 'Amazon',
+      phoneNumber: '555555555',
+      email: 'bob.johnson@amazon.com',
+      country: 'Brazil',
+      status: 'Active',
+    },
+    {
+      name: 'Eva Martinez',
+      company: 'Samsung',
+      phoneNumber: '777777777',
+      email: 'eva.martinez@samsung.com',
+      country: 'Spain',
+      status: 'Inactive',
+    },
+    {
+      name: 'Daniel Lee',
+      company: 'Facebook',
+      phoneNumber: '333333333',
+      email: 'daniel.lee@facebook.com',
+      country: 'South Korea',
+      status: 'Active',
+    },
+    {
+      name: 'Sophie Wang',
+      company: 'Microsoft',
+      phoneNumber: '111111111',
+      email: 'sophie.wang@microsoft.com',
+      country: 'China',
+      status: 'Inactive',
+    },
+  ];
+
   module.exports = {
-    users,
     customers,
-    invoices,
+    users,
     revenue,
+    paidMembers,
   };
-  
