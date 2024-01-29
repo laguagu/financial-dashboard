@@ -29,11 +29,11 @@ function CustomerCard() {
           <UserIcon className="w-12 h-12 text-green-400" />
         </div>
         <div className="space-y-1 ml-4">
-          <p className="text-stone-400">Members</p>
-          <p className={`${lusitana.className} text-4xl`}>1,893</p>
+          <p className="text-stone-400">Paid Members</p>
+          <p className={`${lusitana.className} text-4xl`}>1,193</p>
           <div className="flex items-center justify-center">
             <ArrowDownIcon className="w-4 h-4 text-red-500" />
-            <span className="text-red-500">+16%</span>
+            <span className="text-red-500">+2%</span>
             <p className="ml-1 text-sm font-medium">This month</p>
           </div>
         </div>
