@@ -58,7 +58,8 @@ export type Members = {
   id: string,
   name: string,
   company: string,
+  phonenumber: string,
   email: string,
-  county: string,
+  country: string,
   status: string
 }
