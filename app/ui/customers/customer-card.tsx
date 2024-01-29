@@ -9,7 +9,7 @@ function CustomerCard() {
           <UserIcon className="w-12 h-12 text-green-400" />
         </div>
         <div className="space-y-1 ml-4">
-          <p className="text-gray-300">Total Customers</p>
+          <p className="text-stone-400">Total Customers</p>
           <p className={`${lusitana.className} text-4xl`}>5,423</p>
           <div className="flex items-center justify-center">
             <ArrowUpIcon className="w-4 h-4 text-green-500" />
@@ -25,7 +25,7 @@ function CustomerCard() {
           <UserIcon className="w-12 h-12 text-green-400" />
         </div>
         <div className="space-y-1 ml-4">
-          <p className="text-gray-300">Total Customers</p>
+          <p className="text-stone-400">Total Customers</p>
           <p className={`${lusitana.className} text-4xl`}>5,423</p>
           <div className="flex items-center justify-center">
             <ArrowUpIcon className="w-4 h-4 text-green-500" />
@@ -41,7 +41,7 @@ function CustomerCard() {
           <UserIcon className="w-12 h-12 text-green-400" />
         </div>
         <div className="space-y-1 ml-4">
-          <p className="text-gray-300">Total Customers</p>
+          <p className="text-stone-400">Total Customers</p>
           <p className={`${lusitana.className} text-4xl`}>5,423</p>
           <div className="flex items-center justify-center">
             <ArrowUpIcon className="w-4 h-4 text-green-500" />
