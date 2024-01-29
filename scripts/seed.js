@@ -1,6 +1,7 @@
 const { db } = require("@vercel/postgres");
 const prisma = require("../prisma/db.js").default;
 const bcrypt = require("bcrypt");
+const placeholderData = require("../app/lib/placeholder-data.js")
 
 const users = [
   {
@@ -71,17 +72,53 @@ async function seedUsers(client) {
   }
 }
 
+async function seedPlusMembers(client) {
+  const members = placeholderData.paidMembers
+  try {
+    
+    await client.query(`
+    CREATE TABLE IF NOT EXISTS paidmembers (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL,
+      company TEXT NOT NULL,
+      phoneNumber TEXT NOT NULL,
+      email TEXT NOT NULL,
+      country TEXT NOT NULL,
+      status TEXT NOT NULL
+    );
+    `);
+    console.log(`Created "paidmembers" table`);
+
+    const insertedPaidMembers = await Promise.all(
+      members.map(async (member) => {
+        return client.query(`
+          INSERT INTO paidmembers (name, company, phoneNumber, email, country, status)
+          VALUES ($1, $2, $3, $4, $5, $6)
+          RETURNING id;
+        `, [member.name, member.company, member.phoneNumber, member.email, member.country, member.status]);
+      })    
+    )
+    console.log(`Seeded ${members.length} paid members`);
+    return {
+      members: insertedPaidMembers,
+    };
+  } catch (error) {
+    console.error("Error Seeding paid members table", error)
+    throw error;
+  }
+}
+
+
 async function main() {
   const client = await db.connect();
   // const customers = await fetchCustomersFromDatabase();
   // const invoices = await createInvoices(customers)
-
   // await seedInvoices(client,invoices);
-  await seedUsers(client);
-  //   await seedCustomers(client);
-  //   await seedRevenue(client);
-
+  // await seedUsers(client);
+  await seedPlusMembers(client)
   await client.end();
+  
+
 }
 
 main().catch((err) => {
