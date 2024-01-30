@@ -68,7 +68,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
       {
         "rounded-l-lg": name === "Prev",
         "rounded-r-lg": name === "Next",
-        "pointer-events-none text-gray-200 text-indigo-100": isDisabled,
+        "pointer-events-none text-stone-200": isDisabled,
       }
     );
     return isDisabled ? (
