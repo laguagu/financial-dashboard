@@ -1,5 +1,7 @@
 import {
   UserIcon,
+  UserPlusIcon,
+  ComputerDesktopIcon,
   ArrowUpIcon,
   ArrowDownIcon,
 } from "@heroicons/react/24/outline";
@@ -26,7 +28,7 @@ function CustomerCard() {
       {/* Lisää pystyviiva */}
       <div className="flex items-center m-5 p-3">
         <div className="flex items-center justify-center bg-green-100 w-16 h-16 rounded-full mr-2">
-          <UserIcon className="w-12 h-12 text-green-400" />
+          <UserPlusIcon className="w-12 h-12 text-green-400" />
         </div>
         <div className="space-y-1 ml-4">
           <p className="text-stone-400">Paid Members</p>
@@ -42,7 +44,7 @@ function CustomerCard() {
       {/* Lisää pystyviiva */}
       <div className="flex items-center m-5 p-3">
         <div className="flex items-center justify-center bg-green-100 w-16 h-16 rounded-full mr-2">
-          <UserIcon className="w-12 h-12 text-green-400" />
+          <ComputerDesktopIcon className="w-12 h-12 text-green-400" />
         </div>
         <div className="space-y-1 ml-4">
           <p className="text-stone-400">Active Now</p>
