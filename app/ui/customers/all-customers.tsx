@@ -21,7 +21,7 @@ async function AllCustomersCard() {
           </div>
         </div>
         <table className="w-full mt-10">
-          <thead className="text-neutral-300 text-left border-b-2 mb-5">
+          <thead className="text-neutral-300 text-left border-b-2 mb-5 ">
             <tr>
               <th scope="col" className="flex-1 font-medium">
                 Customer Name
@@ -45,8 +45,8 @@ async function AllCustomersCard() {
           </thead>
           <tbody>
             {members.map((member) => (
-              <tr key={member.id}>
-                <td className="flex-1 py-3 font-semibold">{member.name}</td>
+              <tr key={member.id} className="border-b border-b-stone-200 ">
+                <td className="flex-1 py-3 font-semibold ">{member.name}</td>
                 <td className="flex-1 py-3 font-semibold">{member.company}</td>
                 <td className="flex-1 py-3 font-semibold">
                   {member.phonenumber}
@@ -54,7 +54,7 @@ async function AllCustomersCard() {
                 <td className="flex-1 py-3 font-semibold">{member.email}</td>
                 <td className="flex-1 py-3 font-semibold">{member.country}</td>
                 <td
-                  className={clsx("flex-1 py-3 font-semibold", {
+                  className={clsx("flex-1 py-3 font-semibold ", {
                     "text-green-400 text-center p-4":
                       member.status === "Active",
                     "text-red-400 text-center p-4":
@@ -67,7 +67,7 @@ async function AllCustomersCard() {
             ))}
           </tbody>
         </table>
-        <div className="flex justify-between mt-4 w-full border-t pt-4 items-center">
+        <div className="flex justify-between mt-4 w-full  pt-3 items-center">
           <p className="text-gray-500 text-sm">
             Showind data 1 to 8 of 256k entries
           </p>
