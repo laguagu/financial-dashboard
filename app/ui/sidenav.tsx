@@ -4,6 +4,8 @@ import NavLinks from "./navlinks";
 import { PowerIcon } from "@heroicons/react/24/outline";
 import { CreditCardIcon } from "@heroicons/react/20/solid";
 import { signOut } from "@/auth";
+import logo from "@/public/fundfleet.png"
+import Image from "next/image";
 
 export default function Sidenav() {
   return (
@@ -13,6 +15,7 @@ export default function Sidenav() {
         className="mb-2 flex rounded-md  p-4 md:h-28 bg-zinc-100 items-center justify-center "
       >
         <CreditCardIcon className="h-20 w-20 mb-3 text-blue-400 mt-10" />
+        <Image alt="asd" src={logo}/>
       </Link>
       <NavLinks />
       <div className="mt-auto whitespace-nowrap">
