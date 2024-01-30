@@ -27,10 +27,10 @@ export default function CustomersPage() {
           <CustomerSearch />
         </div>
       </div>
-      <div>
+      <div className="mx-9">
         <CustomerCard />
       </div>
-      <div>
+      <div className="mx-9 mt-14">
         <AllCustomersCard />
       </div>
     </div>
