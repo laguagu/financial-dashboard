@@ -22,8 +22,8 @@ export default function LoggedIn() {
     );
   } else {
     return (
-      <div className="flex justify-center items-center">
-        <p className="px-3">User not logged in</p>
+      <div className="flex justify-center items-center mt-4">
+        <p className="px-3 ">User not logged in</p>
         <Link
           href={"/login"}
           className="px-3 flex items-center hover:bg-blue-500 transition-colors border rounded-lg bg-blue-600 text-white ml-2 p-2"
