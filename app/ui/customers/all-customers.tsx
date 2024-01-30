@@ -2,6 +2,7 @@ import { DatePickerDemo } from "./datepicker";
 import { fetchMembersDB } from "@/app/lib/data";
 import { Members } from "@/app/lib/definitions";
 import clsx from "clsx";
+import PaginationBar from "./pagination-bar";
 
 async function AllCustomersCard() {
   const members: Members[] = await fetchMembersDB();
@@ -66,10 +67,13 @@ async function AllCustomersCard() {
             ))}
           </tbody>
         </table>
-        <div className="flex justify-start mt-4 w-full border-t pt-4">
+        <div className="flex justify-between mt-4 w-full border-t pt-4 items-center">
           <p className="text-gray-500 text-sm">
             Showind data 1 to 8 of 256k entries
           </p>
+          <div className="flex">
+            <PaginationBar />
+          </div>
         </div>
       </div>
     </div>
