@@ -16,7 +16,7 @@ You can try the live version of the app [here](https://finance-app-mu-five.verce
 
 - **Schema Validation**: The app uses ZOD for schema validation. This ensures that the data the app works with is in the correct format and meets certain criteria.
   
-- **Authentication**: The app uses ZOD for schema validation. This ensures that the data the app works with is in the correct format and meets certain criteria.
+- **Authentication**: NextAuth.js is integrated into the project for seamless user authentication, providing a secure and customizable login experience.
   
 - **Other things**: Shadcn, Tailwind, clsx
   
