@@ -19,15 +19,30 @@ function PaginationBar() {
             <PaginationPrevious href="#" />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
+            <PaginationLink
+              href="#"
+              className="hover:bg-sky-100 hover:text-blue-600 rounded-lg hover:font-semibold transition-colors duration-300"
+            >
+              1
+            </PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#">2</PaginationLink>
+            <PaginationLink
+              href="#"
+              className="hover:bg-sky-100 hover:text-blue-600 rounded-lg hover:font-semibold transition-colors duration-300"
+            >
+              2
+            </PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
+            <PaginationLink
+              href="#"
+              className="hover:bg-sky-100 hover:text-blue-600 rounded-lg hover:font-semibold transition-colors duration-300"
+            >
+              3
+            </PaginationLink>
           </PaginationItem>
-          <PaginationItem>
+          <PaginationItem className="hover:bg-sky-100 hover:text-blue-600 rounded-lg hover:font-semibold transition-colors duration-300">
             <PaginationEllipsis />
           </PaginationItem>
           <PaginationItem>
@@ -39,4 +54,4 @@ function PaginationBar() {
   );
 }
 
-export default PaginationBar
+export default PaginationBar;
