@@ -6,7 +6,7 @@ You can try the live version of the app [here](https://finance-app-mu-five.verce
 
 ## Features
 
-- **Next.js and TypeScript**: The app is built with Next.js, a powerful framework for building server-side rendered React applications, and TypeScript, a statically typed superset of JavaScript that enhances maintainability and developer experience.
+- **Next.js and TypeScript**: The app is built with Next.js, a powerful framework for building server-side rendered React applications + TypeScript.
 
 - **Data Fetching**: The app fetches user data from a mock API. This demonstrates the app's ability to work with external APIs and handle asynchronous operations.
 
@@ -15,8 +15,12 @@ You can try the live version of the app [here](https://finance-app-mu-five.verce
 - **Testing**: The app is tested with Jest and Cypress frameworks. Jest is used for unit and integration tests, while Cypress is used for end-to-end tests. This ensures the app's reliability and correctness.
 
 - **Schema Validation**: The app uses ZOD for schema validation. This ensures that the data the app works with is in the correct format and meets certain criteria.
-
-## Getting Started
+  
+- **Authentication**: NextAuth.js is integrated into the project for seamless user authentication, providing a secure and customizable login experience.
+  
+- **Other things**: Shadcn, Tailwind, clsx
+  
+## Getting Started:
 
 To get started with this project, clone the repository and install the dependencies:
 
