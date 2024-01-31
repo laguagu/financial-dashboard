@@ -1,12 +1,12 @@
 import { DatePickerDemo } from "./datepicker";
 import { fetchMembersDB } from "@/app/lib/data";
 import { Members } from "@/app/lib/definitions";
+import { SetStatusInactive, SetStatusActive } from "../invoices/buttons";
 import clsx from "clsx";
 import PaginationBar from "./pagination-bar";
 
 async function AllCustomersCard() {
   const members: Members[] = await fetchMembersDB();
-  console.log(members);
 
   return (
     <div className="flex m-10">
@@ -41,6 +41,9 @@ async function AllCustomersCard() {
               <th scope="col" className="flex-1 font-medium text-center">
                 Status
               </th>
+              <th scope="col" className="flex-1 font-medium text-end">
+                Togle Status
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -61,8 +64,14 @@ async function AllCustomersCard() {
                       member.status === "Inactive",
                   })}
                 >
+                  
                   {member.status}
                 </td>
+                
+                <div className="flex justify-end mt-1">
+                  
+                {member.status === "Active" ? <SetStatusInactive id={member.id} /> : <SetStatusActive id={member.id} />}
+                </div>
               </tr>
             ))}
           </tbody>
