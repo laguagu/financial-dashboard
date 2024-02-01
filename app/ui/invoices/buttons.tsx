@@ -1,6 +1,12 @@
 import Link from "next/link";
-import { PencilIcon, PlusIcon, TrashIcon, CheckBadgeIcon, MoonIcon } from "@heroicons/react/24/outline";
-import { deleteInvoice } from "@/app/lib/actions";
+import {
+  PencilIcon,
+  PlusIcon,
+  TrashIcon,
+  CheckBadgeIcon,
+  MoonIcon,
+} from "@heroicons/react/24/outline";
+import { deleteInvoice, updateStatus } from "@/app/lib/actions";
 
 export function UpdateInvoice({ id }: { id: string }) {
   return (
@@ -39,17 +45,27 @@ export function CreateInvoice() {
 }
 
 export function SetStatusActive({ id }: { id: string }) {
+  const swapStatus = updateStatus.bind(null,id);
   return (
-    <Link href={"#"} className="flex items-center border-2 rounded-lg bg-blue-400 text-white ml-2 p-2">
-      <CheckBadgeIcon className="h-5" />
-    </Link>
+    <form action={swapStatus}>
+      <button
+        className="flex items-center border-2 rounded-lg bg-blue-400 text-white ml-2 p-2"
+      >
+        <CheckBadgeIcon className="h-5" />
+      </button>
+    </form>
   );
 }
 
 export function SetStatusInactive({ id }: { id: string }) {
+  const swapStatus = updateStatus.bind(null,id);
   return (
-    <Link href={"#"} className="flex items-center border-2 rounded-lg bg-blue-400 text-white ml-2 p-2">
-      <MoonIcon className="h-5" />
-    </Link>
+    <form action={swapStatus}>
+      <button
+        className="flex items-center border-2 rounded-lg bg-blue-400 text-white ml-2 p-2"
+      >
+        <MoonIcon className="h-5" />
+      </button>
+    </form>
   );
 }
