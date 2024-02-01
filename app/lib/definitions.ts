@@ -61,5 +61,5 @@ export type Members = {
   phonenumber: string,
   email: string,
   country: string,
-  status: string
+  status: "Active" | "Inactive"
 }
