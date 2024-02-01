@@ -167,6 +167,7 @@ export async function fetchMembersDB() {
   try {
     const data = await sql<Members>`
       SELECT * FROM paidmembers
+      ORDER BY name ASC
     `;
     const members = data.rows;
     return members
