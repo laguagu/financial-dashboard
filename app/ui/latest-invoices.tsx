@@ -13,7 +13,7 @@ export default async function LatestInvoices() {
           return (
             <div
               key={invoice.id}
-              className="p-2 flex flex-row items-center justify-between font-normal pt-3 border bg-white rounded-sm  hover:text-blue-600 duration-100 "
+              className="p-2 flex-col flex md:flex-row items-center justify-between font-normal pt-3 border bg-white rounded-sm  hover:text-blue-600 duration-100 "
             >
               <p className="truncate">{invoice.amount}</p>
 

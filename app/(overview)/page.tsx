@@ -19,10 +19,10 @@ export default async function Home() {
   return (
     <div className="flex h-screen">
       <div className="flex-grow flex flex-col">
-        <div className="flex justify-end pr-4">
+        <div className="hidden md:flex justify-end pr-4 ">
           <LoggedIn/>
         </div>
-        <div className="grid grid-cols-2 gap-6 px-4 m-5">
+        <div className="grid md:grid-cols-2 gap-6 px-4 m-5 grid-cols-1">
           <LatestInvoices />
           <div className="h-full w-full pt-10 flex-none">
             <MonthlyRevenueChart data={revenue} />

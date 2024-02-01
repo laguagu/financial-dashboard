@@ -23,7 +23,7 @@ export default async function CardWrapper() {
   } = await fetchCardData();
   
   return (
-    <div className="grid grid-cols-4 gap-11 ">
+    <div className="grid md:grid-cols-4 md:gap-11 gap-2 grid-cols-1">
       <Card title="Collected" value={totalPaidInvoices} type="collected" />
       <Card title="Pending" value={totalPendingInvoices} type="pending" />
       <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
@@ -45,7 +45,7 @@ export function Card({
 
   return (
     <div className="bg-gray-50 p-4 mt-3 rounded-xl shadow-md transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-300">
-      <div className="flex p-4">
+      <div className="flex- md:p-4 ">
         {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
         <h3 className="text-sm font-medium ml-2">{title}</h3>
       </div>
